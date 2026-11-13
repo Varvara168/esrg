@@ -1,0 +1,30 @@
+<Page x:Class="ChudoObuv.Pages.LoginPage" 
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+      FontFamily="Calibri" 
+      FontSize="16" 
+      Background="{StaticResource MainBackgroundBrush}" 
+      Title="">
+
+    <Grid>
+   
+        <Border Width="420" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Padding="24" 
+                Background="{StaticResource SecondaryBackgroundBrush}" 
+                BorderBrush="{StaticResource AccentBrush}" 
+                BorderThickness="2" 
+                CornerRadius="8">
+            <StackPanel>
+                <TextBlock Text="Вход в систему" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,16" />
+                <TextBlock Text="Логин:" Margin="4,0" />
+                <TextBox x:Name="LoginTextBox" MaxLength="50" KeyDown="LoginTextBox_KeyDown" 
+                         ToolTip="Введите логин из списка пользователей системы. Пароль не требуется." />
+                <TextBlock Text="Пароль вводить не требуется." FontSize="13" Foreground="DimGray" Margin="4,0,4,12" />
+                <Button Content="Войти" Style="{StaticResource AccentButton}" Click="LoginButton_Click" />
+                <Button Content="Войти как гость" Click="GuestButton_Click" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

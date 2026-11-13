@@ -1,0 +1,46 @@
+﻿<Page x:Class= "ChudoObuv.Pages.OrdersPage" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+      FontFamily="Calibri" FontSize="16" Background="{StaticResource MainBackgroundBrush}" 
+      Title="Список заказов" 
+      Loaded="Page_Loaded">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Новый заказ: сначала выбирается клиент -->
+        <Border Grid.Row="0" Background="{StaticResource SecondaryBackgroundBrush}" Padding="8" 
+CornerRadius="6" Margin="0,0,0,8">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Новый заказ для клиента:" VerticalAlignment="Center" Margin="4,0" />
+                <ComboBox x:Name="ClientComboBox" Width="320" DisplayMemberPath="FullName" />
+                <Button Content="Добавить заказ" Style="{StaticResource AccentButton}" 
+Click="AddOrderButton_Click" />
+                <Button Content="Каталог товаров" Click="CatalogButton_Click" />
+            </StackPanel>
+        </Border>
+
+        <DataGrid Grid.Row="1" x:Name="OrdersDataGrid" 
+MouseDoubleClick="OrdersDataGrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№ заказа" Binding="{Binding Id}" Width="90" />
+                <DataGridTextColumn Header="Дата заказа" Binding="{Binding OrderDate, 
+StringFormat=dd.MM.yyyy}" Width="130" />
+                <DataGridTextColumn Header="ФИО клиента" Binding="{Binding ClientFullName}" Width="*" />
+                <DataGridTextColumn Header="Позиций" Binding="{Binding ItemsCount}" Width="90" />
+                <DataGridTextColumn Header="Сумма, ₽" Binding="{Binding TotalSum, StringFormat=N2}" 
+Width="130" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <TextBlock Text="Двойной щелчок по заказу — просмотр состава" VerticalAlignment="Center" 
+Foreground="DimGray" Margin="8,0" />
+            <Button Content="Состав заказа" Click="OpenOrderButton_Click" />
+            <Button Content="Удалить заказ" Click="DeleteOrderButton_Click" />
+        </StackPanel>
+    </Grid>
+</Page>   
